@@ -1,14 +1,14 @@
-from django.shortcuts import render
 from django.http import HttpResponse
+from django.shortcuts import render
 
 
-def render(request):
+def render2(request):
+    tem = 'single-project.html'
     return render(request, 'single-project.html')
-
-
-def projects(request):
-    return render(request, 'projects.html')
-
 
 def project(request, pk):
     return HttpResponse('SINGLE PROJECTS' + ' ' + str(pk))
+
+def projects(request):
+    lorem = 'project.html'
+    return render(request, 'projects.html')

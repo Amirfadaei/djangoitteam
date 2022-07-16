@@ -1,5 +1,7 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from .models import Project
+from .forms import ProjectForm
 
 
 def render2(request):
@@ -10,5 +12,14 @@ def project(request, pk):
     return HttpResponse('SINGLE PROJECTS' + ' ' + str(pk))
 
 def projects(request):
-    lorem = 'project.html'
+    lorem = 'projects.html'
     return render(request, 'projects.html')
+
+def CreateProject(request):
+    if request == 'post':
+        form = ProjectForm(request.post)
+        if form.is_valid():
+            form.save()
+            return redirect('project')
+    form = ProjectForm()
+    return render(request, "Project_form.html", {'form': form})

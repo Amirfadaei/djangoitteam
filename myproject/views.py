@@ -16,10 +16,13 @@ def projects(request):
     return render(request, 'projects.html')
 
 def CreateProject(request):
-    # if request == 'post':
-    #     form = ProjectForm(request.post)
-        # if form.is_valid():
-        #     form.save()
-        #     return redirect('project')
     form = ProjectForm()
+
+    if request.method == 'POST':
+        form = ProjectForm(request.POST)
+        if form.is_valid():
+            print("Yes is valid")
+            form.save()
+            return redirect('project')
+    print('Is not post')
     return render(request, "Project_form.html", {'form': form})

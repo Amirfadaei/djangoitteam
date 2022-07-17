@@ -1,7 +1,7 @@
 from django.db import models
 import uuid
 
-class Project(models.Model):
+class  Project(models.Model):
     title = models.CharField(max_length=500)
     description = models.TextField(null=True, blank=True)
     demo_link = models.CharField(max_length=50, null=True, blank=True)
@@ -37,3 +37,4 @@ class Tag(models.Model):
     def __str__(self):
         return self.name
 
+# if change somthing you should makemigration and migrate manage.py
